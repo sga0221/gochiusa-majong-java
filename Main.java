@@ -38,35 +38,7 @@ public class Main{
 	    return hai[i][j];
 	}
     }
-    
-    public static String shuntsu(int i){
-	int j;
-	do{
-	    j= r.nextInt(7) + 1;
-	}while(hai_count[i][j-1] >= 4 || hai_count[i][j] >= 4 || hai_count[i][j+1] >= 4);
-	hai_count[i][j-1]++;
-	hai_count[i][j]++;
-	hai_count[i][j+1]++;
-	return (hai[i][j-1] + hai[i][j] + hai[i][j+1]);
-    }
-
-    public static String kotsu(int i){
-	int j;
-	if(i == 3){ 
-	    do{
-		j= r.nextInt(7);
-	    }while(ji_count[j] >= 2);
-	    ji_count[j] =+ 3;
-	    return (jihai[j] + jihai[j] + jihai[j]);
-	}else{
-	    do{
-		j = r.nextInt(9);
-	    }while(hai_count[i][j] >= 4);
-	    hai_count[i][j] =+ 3;
-	    return(hai[i][j] + hai[i][j] + hai[i][j]);
-	}
-    }
-    
+    //雀頭の設定
     public static String head(int i){
 	int j;
 	if(i == 3){
@@ -84,10 +56,42 @@ public class Main{
 	}
     }
     
+    //順子の設定
+    public static String shuntsu(int i){
+	int j;
+	do{
+	    j= r.nextInt(7) + 1;
+	}while(hai_count[i][j-1] >= 4 || hai_count[i][j] >= 4 || hai_count[i][j+1] >= 4);
+	hai_count[i][j-1]++;
+	hai_count[i][j]++;
+	hai_count[i][j+1]++;
+	return (hai[i][j-1] + hai[i][j] + hai[i][j+1]);
+    }
+
+    //刻子の設定
+    public static String kotsu(int i){
+	int j;
+	if(i == 3){ 
+	    do{
+		j= r.nextInt(7);
+	    }while(ji_count[j] >= 2);
+	    ji_count[j] =+ 3;
+	    return (jihai[j] + jihai[j] + jihai[j]);
+	}else{
+	    do{
+		j = r.nextInt(9);
+	    }while(hai_count[i][j] >= 2);
+	    hai_count[i][j] =+ 3;
+	    return(hai[i][j] + hai[i][j] + hai[i][j]);
+	}
+    }
+    //雀頭の生成
     public static void make_head(){
 	int i = r.nextInt(4);
 	System.out.print(head(i) + " ");
     }
+    
+    //その他の部分の生成
     public static void make_body(){
 	int choice = r.nextInt(2);
 	int n;
@@ -123,16 +127,22 @@ public class Main{
 
 	//headの出力
 	make_head();
+
 	//bodyの出力
+	//なきの設定.ないた部分を()で表現する
 	int naki = r.nextInt(5);
 	for(int k = 0 ; k < 4;k++){
 	    if(k == naki)
 		System.out.print("( ");
 	    make_body();
 	}
+	
 	//改行
+	//ないた部分のかっこを閉じる
 	if(naki != 4)
 	    System.out.print(" )");
+
+	
 	System.out.println();
     }
 }

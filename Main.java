@@ -9,12 +9,22 @@ public class Main{
     };
     static String jihai[] = {":ton:",":nan:",":sha:",":pe:",":haku:",":hatsu:",":chun:"};
 
+    static String bakaze[] = {"東","南","西"};
+    static String jikaze[] = {"東","南","西","北"};
+    
     static int hai_count[][] = new int[3][10];
  
     static int ji_count[] = new int[7];
     
     static long seed = System.currentTimeMillis();
     static Random r = new Random(seed);
+
+    public static String bkaze(){
+	return bakaze[r.nextInt(3)];
+    }
+    public static String jkaze(){
+	return jikaze[r.nextInt(4)];
+    }
 
     public static String dora(int i){
 	int j;
@@ -104,6 +114,9 @@ public class Main{
 	for(int i = 0;i < 4;i++){
 	    ji_count[i] = 0;
 	}
+	//kazeの出力
+	System.out.println("場風: " + bkaze() + ", 自風: " + jkaze());
+	
 	//doraの出力
 	int d = r.nextInt(4);
 	System.out.println("ドラ: " + dora(d));

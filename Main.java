@@ -15,6 +15,19 @@ public class Main{
     
     static long seed = System.currentTimeMillis();
     static Random r = new Random(seed);
+
+    public static String dora(int i){
+	int j;
+	if(i == 3){
+	    j= r.nextInt(7);
+	    ji_count[j] =+ 1;
+	    return jihai[j];
+	}else{
+	    j= r.nextInt(9);
+	    hai_count[i][j] =+ 1;
+	    return hai[i][j];
+	}
+    }
     
     public static String shuntsu(int i){
 	int j;
@@ -91,7 +104,10 @@ public class Main{
 	for(int i = 0;i < 4;i++){
 	    ji_count[i] = 0;
 	}
-	
+	//doraの出力
+	int d = r.nextInt(4);
+	System.out.println("ドラ: " + dora(d));
+
 	//headの出力
 	make_head();
 	//bodyの出力

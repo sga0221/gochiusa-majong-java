@@ -111,9 +111,15 @@ public class Main{
 	//headの出力
 	make_head();
 	//bodyの出力
-	for(int k = 0 ; k < 4;k++)
+	int naki = r.nextInt(5);
+	for(int k = 0 ; k < 4;k++){
+	    if(k == naki)
+		System.out.print("( ");
 	    make_body();
+	}
 	//改行
+	if(naki != 4)
+	    System.out.print(" )");
 	System.out.println();
     }
 }
